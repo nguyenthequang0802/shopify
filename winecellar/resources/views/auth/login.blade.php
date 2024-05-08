@@ -5,7 +5,7 @@
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sign in</h5>
         </a>
-        <form class="max-w-sm mx-auto mt-4" method="POST" action="{{ route('login') }}">
+        <form class="max-w-sm mx-auto mt-4" method="POST" action="{{ route('admin.auth.login.store') }}">
             @csrf
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
@@ -16,7 +16,8 @@
             </div>
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('password')  border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full @enderror" required autocomplete="current-password"/>
+                <input type="password" id="password" name="password"
+                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('password')  border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full @enderror" required autocomplete="current-password"/>
                 @error('password')
                     <p id="filled_error_help" class="mt-2 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
                 @enderror
@@ -38,7 +39,7 @@
         </form>
         <div class="mt-8 pt-5 border-t-[1px] border-solid border-red-900">
             <span class="inline-block text-gray-400">Don't have an account?</span>
-            <a class="text-[#990d23]" href="{{ route('register') }}">Sign up</a>
+            <a class="text-[#990d23]" href="{{ route('admin.auth.register') }}">Sign up</a>
         </div>
     </div>
 {{--<div class="container">--}}

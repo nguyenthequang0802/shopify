@@ -5,7 +5,7 @@
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sign up</h5>
         </a>
-        <form class="max-w-sm mx-auto mt-4" method="POST" action="{{ route('register') }}">
+        <form class="max-w-sm mx-auto mt-4" method="POST" action="{{ route('admin.auth.register.store') }}">
             @csrf
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -56,7 +56,7 @@
         </form>
         <div class="mt-8 pt-5 border-t-[1px] border-solid border-red-900">
             <span class="inline-block text-gray-400">Already have account?</span>
-            <a class="text-[#990d23]" href="{{ route('login') }}">Sign in</a>
+            <a class="text-[#990d23]" href="{{ route('admin.auth.login') }}">Sign in</a>
         </div>
     </div>
 {{--<div class="container">--}}

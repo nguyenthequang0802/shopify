@@ -411,7 +411,7 @@
     </aside>
 
     <div class="p-4 pt-12 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <div class="p-2.5 mt-20">
             @yield('content')
         </div>
     </div>

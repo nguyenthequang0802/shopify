@@ -29,7 +29,7 @@
                             </div>
                             <div>
                                 <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                                <textarea class="tinyMce" name="user-bio"></textarea>
+                                <textarea id="country2" class="tinyMce" name="user-bio"></textarea>
                             </div>
                         </div>
                         <div class="flex justify-between">

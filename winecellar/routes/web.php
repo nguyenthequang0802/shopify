@@ -36,6 +36,9 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
         Route::get('/delete/{id}', [BrandController::class, 'destroy'])->name("admin.brand.destroy");
     });
 });
+Route::get('/tinymce', function () {
+    return view('tinyMCE');
+});
 
 Auth::routes();
 

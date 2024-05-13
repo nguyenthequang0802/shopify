@@ -27,10 +27,6 @@
                                 <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
                                 <input type="tel" id="country" name="country" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Country..." required />
                             </div>
-                            <div>
-                                <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                                <textarea id="country2" class="tinyMce" name="user-bio"></textarea>
-                            </div>
                         </div>
                         <div class="flex justify-between">
                             <a href=" {{ route('admin.brand.index') }}">

@@ -1,6 +1,6 @@
 @extends('Layout.adminPage')
 @section('content')
-    <div class="w-full p-4 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-3 dark:bg-gray-800 dark:border-gray-700 mt-20">
+    <div class="w-full p-4 text-left bg-white border border-gray-200 rounded-lg shadow sm:p-3 dark:bg-gray-800 dark:border-gray-700">
         <div class="header-card flex justify-between mb-2.5 mx-2.5">
             <h1 class="text-md font-bold text-left">Brand Table</h1>
             <div>

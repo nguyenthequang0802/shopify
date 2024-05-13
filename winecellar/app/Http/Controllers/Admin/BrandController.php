@@ -31,4 +31,20 @@ class BrandController extends Controller
         ]);
         return redirect()->route('admin.brand.index');
     }
+    public function edit($id){
+        $brand = brand::find($id);
+        return view('admin.brand.edit', ['brand' => $brand]);
+    }
+
+    public function update(Request $request, $id){
+        $input = $request->all();
+        $brand = brand::find($id);
+        $brand['name'] = $input['brand_name'];
+        $brand['slug'] = $input['slug'] ?? str::Slug($input['brand_name']);
+        $brand['icon'] = $input['icon'];
+        $brand['country'] = $input['country'];
+        $brand->save();
+        return redirect()->route('admin.brand.index');
+    }
+
 }

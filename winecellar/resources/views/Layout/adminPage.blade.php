@@ -419,10 +419,6 @@
     <div class="p-4 pt-12 sm:ml-64">
         <div class="p-2.5 mt-20">
             @yield('content')
-            <div class="mb-3">
-                <label for="pwd">TinyMCE input:</label>
-                <textarea class="tinyMce" name="user-bio"></textarea>
-            </div>
         </div>
     </div>
 

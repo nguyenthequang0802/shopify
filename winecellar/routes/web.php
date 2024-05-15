@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,15 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
         Route::get('/edit/{id}', [BrandController::class, 'edit'])->name("admin.brand.edit");
         Route::post('/edit/{id}', [BrandController::class, 'update'])->name("admin.brand.update");
         Route::get('/delete/{id}', [BrandController::class, 'destroy'])->name("admin.brand.destroy");
+    });
+
+    Route::group(['prefix' => 'post'], function () {
+        Route::get('/', [PostController::class, 'index'])->name("admin.post.index");
+        Route::get('/add', [PostController::class, 'create'])->name("admin.post.add");
+        Route::post('/add', [PostController::class, 'store'])->name("admin.post.store");
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name("admin.post.edit");
+        Route::post('/edit/{id}', [PostController::class, 'update'])->name("admin.post.update");
+        Route::get('/delete/{id}', [PostController::class, 'destroy'])->name("admin.post.destroy");
     });
 });
 Route::get('/tinymce', function () {

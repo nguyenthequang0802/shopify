@@ -47,4 +47,13 @@ class BrandController extends Controller
         return redirect()->route('admin.brand.index');
     }
 
+    public function destroy($id){
+        $item = brand::find($id);
+
+        $item->delete();
+        return  response()->json([
+            'message' => 'Xóa thành công!',
+            'item'=> $id,
+        ], 200);
+    }
 }

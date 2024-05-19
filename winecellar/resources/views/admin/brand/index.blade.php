@@ -63,7 +63,7 @@
                                         <div class="tooltip-arrow" data-popper-arrow></div>
                                     </div>
                                 </a>
-                                <a href="{{ route('admin.brand.destroy', $brand->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                                <a data-url="{{ route('admin.brand.destroy', $brand->id) }}" class="action-delete font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                     <button data-tooltip-target="tooltip-delete" data-tooltip-placement="bottom" type="button" class="ms-1.5 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center me-2 mb-2">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </button>
@@ -80,4 +80,9 @@
             </div>
         </div>
     </div>
+    <div class=" fixed top-[115px] right-[26px]">
+        @include('admin.common.alert_success')
+        @include('admin.common.alert_error')
+    </div>
+    @include('admin.common.javascript')
 @endsection

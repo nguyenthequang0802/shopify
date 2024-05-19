@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PostController;
@@ -27,6 +28,15 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
     Route::get('/dashboard', function () { return view('admin.dashBoard');});
     Route::get('/register', [RegisterController::class, 'showAdminRegistrationForm'])->name('admin.auth.register');
     Route::post('/register', [RegisterController::class, 'storeAdminAccount'])->name('admin.auth.register.store');
+
+    Route::group(['prefix' => 'category'], function () {
+        Route::get('/{model_type}/', [CategoryController::class, 'index'])->name("admin.category.index");
+        Route::get('/{model_type}/add', [CategoryController::class, 'create'])->name("admin.category.add");
+        Route::post('/{model_type}/add', [CategoryController::class, 'store'])->name("admin.category.store");
+        Route::get('/{model_type}/edit/{id}', [CategoryController::class, 'edit'])->name("admin.category.edit");
+        Route::post('/{model_type}/edit/{id}', [CategoryController::class, 'update'])->name("admin.category.update");
+        Route::get('/{model_type}/delete/{id}', [CategoryController::class, 'destroy'])->name("admin.category.destroy");
+    });
 
     Route::group(['prefix' => 'brand'], function () {
         Route::get('/', [BrandController::class, 'index'])->name("admin.brand.index");

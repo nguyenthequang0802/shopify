@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
         Route::get('/', [PostController::class, 'index'])->name("admin.post.index");
         Route::get('/add', [PostController::class, 'create'])->name("admin.post.add");
         Route::post('/add', [PostController::class, 'store'])->name("admin.post.store");
+        Route::get('/show/{id}', [PostController::class, 'show'])->name("admin.post.show");
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name("admin.post.edit");
         Route::post('/edit/{id}', [PostController::class, 'update'])->name("admin.post.update");
         Route::get('/delete/{id}', [PostController::class, 'destroy'])->name("admin.post.destroy");

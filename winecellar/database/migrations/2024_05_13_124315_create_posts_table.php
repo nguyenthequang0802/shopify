@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('name');
             $table->text('slug');
             $table->text('description');
+            $table->text('preview_image')->nullable();
             $table->longText('content');
             $table->bigInteger('views')->default(0);
             $table->double('rating_num')->default(0);

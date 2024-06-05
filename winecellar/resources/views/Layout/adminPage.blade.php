@@ -418,12 +418,31 @@
         </div>
     </aside>
 
-    <div class="p-4 pt-12 sm:ml-64">
+    <div class="p-4 pt-12 sm:ml-64 bg-[#eff7f8]">
         <div class="p-2.5 mt-20">
             @yield('content')
         </div>
     </div>
 
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{{ asset('/backend/js/simple.money.format.js') }}"></script>
+    <script>
+        $('.price_format').simpleMoneyFormat();
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.getElementById('button-image').addEventListener('click', (event) => {
+                event.preventDefault();
+
+                window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+            });
+        });
+
+        function fmSetLink($url) {
+            // cấu hình link
+            document.getElementById('image_label').value = $url;
+        }
+    </script>
 </body>
 </html>

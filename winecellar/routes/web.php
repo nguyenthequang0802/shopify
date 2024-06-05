@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +57,19 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
         Route::get('/edit/{id}', [PostController::class, 'edit'])->name("admin.post.edit");
         Route::post('/edit/{id}', [PostController::class, 'update'])->name("admin.post.update");
         Route::get('/delete/{id}', [PostController::class, 'destroy'])->name("admin.post.destroy");
+    });
+    Route::group(['prefix' => 'product'], function () {
+        Route::get('/', [ProductController::class, 'index'])->name("admin.product.index");
+        Route::get('/add', [ProductController::class, 'create'])->name("admin.product.add");
+        Route::post('/add', [ProductController::class, 'store'])->name("admin.product.store");
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name("admin.product.edit");
+        Route::post('/edit/{id}', [ProductController::class, 'update'])->name("admin.product.update");
+        Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name("admin.product.destroy");
+        Route::group(['prefix' => 'upload-file'], function () {
+            Route::get('/{product_id}', [ProductImageController::class, 'index'])->name("admin.product.upload.index");
+            Route::post('/{product_id}', [ProductImageController::class, 'store'])->name("admin.product.upload.store");
+            Route::get('/{image_id}/delete', [ProductImageController::class, 'destroy'])->name("admin.product.upload.destroy");
+        });
     });
 });
 Route::get('/tinymce', function () {

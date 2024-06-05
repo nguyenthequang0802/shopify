@@ -47,7 +47,6 @@
     </div>
     <div class=" fixed top-[115px] right-[26px]">
         @include('admin.common.alert_success')
-        @include('admin.common.alert_error')
     </div>
     @include('admin.common.javascript')
 @endsection

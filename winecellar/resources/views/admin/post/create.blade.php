@@ -28,13 +28,18 @@
                             <div class="">
                                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link ảnh preview <p class="inline-block text-red-400 text-sm">*</p>:</label>
                                 <div class="grid grid-cols-7">
-                                    <input type="text" id="image_label" class="col-span-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="preview_image"
-                                           aria-label="Image" aria-describedby="button-image">
+                                    <input type="text" id="image_label" class="col-span-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="preview_image[]"
+                                           aria-label="Image" aria-describedby="button-image" multiple="multiple">
                                     <div class="input-group-append col-span-1">
-                                        <button class="h-full w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-r-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" id="button-image">Chọn ảnh</button>
+                                        <button
+                                            data-input="images" data-preview="holder"
+                                            class="h-full w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-r-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" id="button-image">Chọn ảnh</button>
                                     </div>
                                 </div>
                             </div>
+                    </div>
+                    <div class="images-preview">
+                        <img id="holder" class="mt-3 max-h-[100px]">
                     </div>
                 </div>
             </div>
@@ -95,8 +100,31 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('button-image').addEventListener('click', (event) => {
+
                 event.preventDefault();
                 window.open('/file-manager/fm-button', 'fm', 'width=1400,height=800');
+                // let input_id = this.getAttribute('data-input');
+                // let preview_id = this.getAttribute('data-preview');
+                // window.SetUrl = function (items) {
+                //     let filePaths = items.map(function (item) {
+                //         return item.url;
+                //     }).join(',');
+                //
+                //     // Set the value of the input field
+                //     document.getElementById(input_id).value = filePaths;
+                //
+                //     // Clear the preview
+                //     let holder = document.getElementById(preview_id);
+                //     holder.innerHTML = '';
+                //
+                //     // Add the selected images to the preview
+                //     items.forEach(function (item) {
+                //         let img = document.createElement('img');
+                //         img.setAttribute('src', item.thumb_url);
+                //         img.style.marginRight = '10px';
+                //         holder.appendChild(img);
+                //     });
+                // };
             });
         });
         // set file link

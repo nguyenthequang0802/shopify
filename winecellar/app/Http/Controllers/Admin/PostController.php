@@ -35,7 +35,19 @@ class PostController extends Controller
         }
         $item->save();
     }
-
+    protected function saveImageIntoPost($images, $post): void
+    {
+        foreach ($images as $img)
+        {
+            $image = new Image();
+            $image["type"] = typeOf($post);
+            $image["model_id"] = $post->id;
+            $image["path"] = $img;
+            $image["name"] = $img;
+            $image["alt"] = $img;
+            $image->save();
+        }
+    }
     public function index(){
         $group = 'post';
         $posts = Post::orderBy('category_id', 'ASC')->whereHas('category', function ($query) use ($group) {
@@ -54,6 +66,8 @@ class PostController extends Controller
         $input = $request->all();
         $item = new Post();
         $this->fillDataToPost($item, $input, true);
+        $images = $input['images[]'] ?? [];
+        $this->saveImageIntoPost($images, $item);
         return redirect()->route('admin.post.index')->with('ok', 'Thêm mới thành công');
     }
 
@@ -66,6 +80,8 @@ class PostController extends Controller
         $input = $request->all();
         $item = Post::find($id);
         $this->fillDataToPost($item, $input, false);
+        $images = $input['images[]'] ?? [];
+        $this->saveImageIntoPost($images, $item);
         return redirect()->route('admin.post.index')->with('ok', 'Cập nhật thành công');
     }
     public function destroy($id){

@@ -11,21 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->unsignedBigInteger('product_id')->nullable();
+            $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade');
             $table->text('name');
             $table->text('slug');
             $table->text('description');
-            $table->text('preview_image')->nullable();
-            $table->longText('content');
-            $table->bigInteger('views')->default(0);
-            $table->double('rating_num')->default(0);
-            $table->integer('rating_value')->default(0);
-            $table->text('seo_title')->nullable();
-            $table->text('seo_keywords')->nullable();
-            $table->text('seo_description')->nullable();
+            $table->text('detail_product');
+            $table->integer('quantity');
+            $table->bigInteger('price');
+            $table->integer('promotion');
+            $table->integer('views');
+            $table->integer('rating_number');
+            $table->double('rating_value');
             $table->timestamps();
         });
     }
@@ -35,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('products');
     }
 };

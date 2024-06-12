@@ -20,8 +20,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::group(['prefix' => '/'], function () {
+    Route::get('/', function () {
+        return view('pages.index');
+    });
+    Route::get('/store', function () {
+        return view('pages.store');
+    });
 });
 
 Route::get('admin/login', [LoginController::class, 'showAdminLoginForm'])->name('admin.auth.login');
@@ -72,10 +81,6 @@ Route::group(['prefix' => 'admin','middleware' => ['auth:admin']], function (){
         });
     });
 });
-Route::get('/tinymce', function () {
-    return view('tinyMCE');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

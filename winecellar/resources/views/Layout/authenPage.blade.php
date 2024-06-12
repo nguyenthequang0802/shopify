@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login/Register</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        body{
+            margin: 0!important;
+            padding: 0!important;
+        }
+    </style>
 </head>
 <body>
     <header class="w-full h-auto bg-[#990d23] shadow-xl py-4">
